@@ -6,31 +6,23 @@ public class AnimatorScript : MonoBehaviour
 {
     Animator m_Animator;
 
-    // Start is called before the first frame update
     void Start()
     {
-        m_Animator = GetComponent<Animator>();
+        //Get the Animator attached to the GameObject you are intending to animate.
+        m_Animator = gameObject.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        //Press the up arrow button to reset the trigger and set another one
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            m_Animator.ResetTrigger("Idle");
-            m_Animator.SetTrigger("Jump");
+            Debug.Log("Idle");
+            //Reset the "Crouch" trigger
+            m_Animator.SetTrigger("TauntTrigger");
+
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            m_Animator.ResetTrigger("Jump");
-            m_Animator.SetTrigger("Run");
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            m_Animator.ResetTrigger("Run");
-            m_Animator.SetTrigger("Idle");
-        }
     }
 }
+
